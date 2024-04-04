@@ -21,9 +21,9 @@ static const char col_gray2[]			= "#bbbbbb";
 static const char col_gray3[]			= "#eeeeee";
 static const char col_carbon[]			= "#323232";
 static const char *colors[][3]			= {
-	/*               fg         bg         	border   */
-	[SchemeNorm] = { col_gray2, col_black, 	col_gray1 },
-	[SchemeSel]  = { col_gray3, col_carbon,	col_carbon  },
+	/*               fg         bg         border   */
+	[SchemeNorm] = { col_gray2, col_black, col_gray1 },
+	[SchemeSel]  = { col_gray3, col_carbon,  col_carbon  },
 };
 
 /* tagging */
@@ -69,7 +69,10 @@ static const char *browser[]	= { BROWSER, NULL };
 static const char *tlg[]	= { "telegram-desktop", NULL };
 static const char *steam[]	= { "steam", NULL };
 static const char *lf[]		= { TERM, "-e", "lf", NULL };
-static const char *pcmanfm[]	= { "pcmanfm", NULL };  
+static const char *zap[]	= { TERM, "-e", "nchat", "-d", "/home/joao/.config/nchat", NULL };
+static const char *spot[]	= { TERM, "-e", "spotify_player", NULL };
+static const char *torrent[]	= { "qbittorrent", NULL };
+static const char *pcmanfm[]	= { "pcmanfm", NULL };
 static const char *upvol[]	= { "/usr/bin/amixer", "set", "Master", "1%+", NULL };
 static const char *downvol[]	= { "/usr/bin/amixer", "set", "Master", "1%-", NULL };
 static const char *mutevol[]	= { "/usr/bin/amixer", "set", "Master", "toggle", NULL };
@@ -101,15 +104,18 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,	XK_period,			tagmon,		{.i = +1 } },
 	{ MODKEY,		XK_w,				spawn,		{.v = browser } },
 	{ MODKEY,		XK_t,				spawn,		{.v = tlg } },
-	{ MODKEY,		XK_g,				spawn,		{.v = steam } } ,
+	{ MODKEY,		XK_g,				spawn,		{.v = steam } },
 	{ MODKEY,		XK_f,				spawn,		{.v = lf } },
+	{ MODKEY,		XK_z,				spawn,		{.v = zap } },
+	{ MODKEY,		XK_s,				spawn,		{.v = spot } },
+	{ MODKEY,		XK_q,				spawn,		{.v = torrent } },
 	{ MODKEY,		XK_p,				spawn,		{.v = pcmanfm } },
 	{ 0,			XF86XK_AudioLowerVolume,	spawn,		{.v = downvol } },
 	{ 0,			XF86XK_AudioRaiseVolume,	spawn,		{.v = upvol } },
 	{ 0,			XF86XK_AudioMute,		spawn,		{.v = mutevol } },
 	{ 0,			XF86XK_MonBrightnessUp,		spawn,		{.v = uplight } },
 	{ 0,			XF86XK_MonBrightnessDown,	spawn,		{.v = downlight } },
-	{ 0,			XK_Print,			spawn,		SHCMD("scrot /home/joao/pix/ss/%Y-%m-%d_%H-%M-%S.png") }, 
+	{ 0,			XK_Print,			spawn,		SHCMD("scrot /home/joao/pix/ss/%Y-%m-%d_%H-%M-%S.png") },
 	TAGKEYS(		XK_1,                      			0)
 	TAGKEYS(		XK_2,                      			1)
 	TAGKEYS(		XK_3,                      			2)
@@ -138,4 +144,3 @@ static const Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-
