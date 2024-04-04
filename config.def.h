@@ -21,9 +21,9 @@ static const char col_gray2[]			= "#bbbbbb";
 static const char col_gray3[]			= "#eeeeee";
 static const char col_carbon[]			= "#323232";
 static const char *colors[][3]			= {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray2, col_black, col_gray1 },
-	[SchemeSel]  = { col_gray3, col_carbon,  col_carbon  },
+	/*               fg         bg         	border   */
+	[SchemeNorm] = { col_gray2, col_black, 	col_gray1 },
+	[SchemeSel]  = { col_gray3, col_carbon,	col_carbon  },
 };
 
 /* tagging */
