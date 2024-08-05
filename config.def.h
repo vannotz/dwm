@@ -62,11 +62,13 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] 	= "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char dmenuhp[]	= "librewolf,gimp,steam,telegram-desktop,alacritty,pcmanfm,qbittorrent";
+static const char dmenuhp[]	= "librewolf,gimp,steam,telegram-desktop,alacritty,pcmanfm,qbittorrent,chromium,betterbird";
 static const char *dmenucmd[]	= { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_black, "-nf", col_gray2, "-sb", col_carbon, "-sf", col_gray3, "-hp", dmenuhp, NULL };
 static const char *termcmd[]	= { TERM, NULL };
 static const char *browser[]	= { BROWSER, NULL };
 static const char *tlg[]	= { "telegram-desktop", NULL };
+static const char *email[]	= { "betterbird", NULL };
+static const char *discord[]	= { "vesktop", NULL };
 static const char *steam[]	= { "steam", NULL };
 static const char *lf[]		= { TERM, "-e", "lf", NULL };
 static const char *zap[]	= { TERM, "-e", "nchat", "-d", "/home/joao/.config/nchat", NULL };
@@ -105,6 +107,8 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,	XK_period,			tagmon,		{.i = +1 } },
 	{ MODKEY,		XK_w,				spawn,		{.v = browser } },
 	{ MODKEY,		XK_t,				spawn,		{.v = tlg } },
+	{ MODKEY,		XK_e,				spawn,		{.v = email } },
+	{ MODKEY,		XK_m,				spawn,		{.v = discord } },
 	{ MODKEY,		XK_g,				spawn,		{.v = steam } },
 	{ MODKEY,		XK_f,				spawn,		{.v = lf } },
 	{ MODKEY,		XK_z,				spawn,		{.v = zap } },
