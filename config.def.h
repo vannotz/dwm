@@ -13,8 +13,8 @@ static const int systraypinningfailfirst	= 1;	/* 1: if pinning fails, display sy
 static const int showsystray			= 1;	/* 0 means no systray */
 static const int showbar			= 1;	/* 0 means no bar */
 static const int topbar				= 1;	/* 0 means bottom bar */
-static const char *fonts[]			= { "Hack Nerd Font Mono:size=9:antialias:true" };
-static const char dmenufont[]			= "Hack Nerd Font Mono:size=9";
+static const char *fonts[]			= { "Hack:size=9:antialias:true" };
+static const char dmenufont[]			= "Hack:size=9";
 static const char col_black[]			= "#151515";
 static const char col_gray1[]			= "#000000";
 static const char col_gray2[]			= "#bbbbbb";
@@ -62,12 +62,12 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] 	= "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char dmenuhp[]	= "librewolf,gimp,steam,telegram-desktop,alacritty,pcmanfm,qbittorrent,chromium,betterbird";
+static const char dmenuhp[]	= "librewolf,gimp,steam,telegram-desktop,alacritty,pcmanfm,qbittorrent,chromium,thunderbird";
 static const char *dmenucmd[]	= { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_black, "-nf", col_gray2, "-sb", col_carbon, "-sf", col_gray3, "-hp", dmenuhp, NULL };
 static const char *termcmd[]	= { TERM, NULL };
 static const char *browser[]	= { BROWSER, NULL };
 static const char *tlg[]	= { "telegram-desktop", NULL };
-static const char *email[]	= { "betterbird", NULL };
+static const char *email[]	= { "thunderbird", NULL };
 static const char *discord[]	= { "vesktop", NULL };
 static const char *steam[]	= { "steam", NULL };
 static const char *lf[]		= { TERM, "-e", "lf", NULL };
@@ -76,9 +76,9 @@ static const char *spot[]	= { TERM, "-e", "spotify_player", NULL };
 static const char *torrent[]	= { "qbittorrent", NULL };
 static const char *pcmanfm[]	= { "pcmanfm", NULL };
 static const char *lock[]	= { "slock", NULL };
-static const char *upvol[]	= { "/usr/bin/amixer", "set", "Master", "1%+", NULL };
-static const char *downvol[]	= { "/usr/bin/amixer", "set", "Master", "1%-", NULL };
-static const char *mutevol[]	= { "/usr/bin/amixer", "set", "Master", "toggle", NULL };
+static const char *mutevol[]    = { "/usr/bin/wpctl", "set-mute", "@DEFAULT_AUDIO_SINK@", "toggle", NULL };
+static const char *upvol[]      = { "/usr/bin/wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "1%+", NULL };
+static const char *downvol[]    = { "/usr/bin/wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "1%-", NULL };
 static const char *uplight[]	= { "xbacklight", "-inc", "2", NULL };
 static const char *downlight[]	= { "xbacklight", "-dec", "2", NULL };
 
@@ -116,9 +116,9 @@ static const Key keys[] = {
 	{ MODKEY,		XK_q,				spawn,		{.v = torrent } },
 	{ MODKEY,		XK_p,				spawn,		{.v = pcmanfm } },
 	{ MODKEY|ShiftMask,	XK_l,				spawn,		{.v = lock } },
+	{ 0,			XF86XK_AudioMute,		spawn,		{.v = mutevol } },
 	{ 0,			XF86XK_AudioLowerVolume,	spawn,		{.v = downvol } },
 	{ 0,			XF86XK_AudioRaiseVolume,	spawn,		{.v = upvol } },
-	{ 0,			XF86XK_AudioMute,		spawn,		{.v = mutevol } },
 	{ 0,			XF86XK_MonBrightnessUp,		spawn,		{.v = uplight } },
 	{ 0,			XF86XK_MonBrightnessDown,	spawn,		{.v = downlight } },
 	{ 0,			XK_Print,			spawn,		SHCMD("scrot /home/joao/pix/ss/%Y-%m-%d_%H-%M-%S.png") },
